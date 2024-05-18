@@ -111,6 +111,6 @@ while True:
     
     if lives == 0:
         print(stages[0])
-        print(f"The word was '{chosen_word}'.")
         print("Oh no! The hangman has met his fate. Better luck next time!")
+        print(f"The word was '{chosen_word}'.")
         break
