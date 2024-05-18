@@ -126,6 +126,8 @@ for letters in chosen_word:
 lives=5
 print(ascii_art)
 print(chosen_word)
+
+
 while True:
     guess=input("Guess a letter: ")
     if guess in display:
