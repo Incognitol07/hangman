@@ -86,19 +86,17 @@ win=    """
 display = ["_" for _ in chosen_word]
 lives = 5
 print(ascii_art)
-
+choices=[]
 while True:
     print(f"{' '.join(display)}")
     guess = input("Guess a letter: ").lower()
     
-    if guess in display:
+    if guess in choices:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(ascii_art)
         print(stages[lives])
-        print(f"You've already guessed {guess}")
-        continue
-    
-    if guess in chosen_word:
+        print(f"You've already guessed '{guess}'cms")
+    elif guess in chosen_word :
         for position in range(len(chosen_word)):
             if chosen_word[position] == guess:
                 display[position] = guess
@@ -112,6 +110,9 @@ while True:
         print(stages[lives])
         lives -= 1
         print(f"You guessed {guess}, that's not in the word. You lose a life!")
+    choices.append(guess)
+    
+    
     
     
     if "_" not in display:
