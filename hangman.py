@@ -73,6 +73,15 @@ stages = [
 ===========
 """
 ]
+win=    """
+    +---+
+    |   |
+        |
+    O   |
+   /|\\  |
+   / \\  |
+===========
+"""
 
 display = ["_" for _ in chosen_word]
 lives = 5
@@ -108,8 +117,8 @@ while True:
     if "_" not in display:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(ascii_art)
-        print(stages[lives])
         print(f"{' '.join(display)}")
+        print(win)
         print("Hooray! You saved the hangman!")
         break
     
