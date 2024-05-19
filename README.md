@@ -15,7 +15,7 @@ This is a simple command-line Hangman game implemented in Python.
 ## Requirements
 
 - Python 3.x
-- `pyfiglet` library
+- `ascii_magic` library
 
 ## Installation
 
