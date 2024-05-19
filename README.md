@@ -61,4 +61,4 @@ python hangman.py
 ### `requirements.txt`
 
 
-pyfiglet
+`ascii_magic`
