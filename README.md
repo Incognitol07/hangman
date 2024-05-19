@@ -1,6 +1,6 @@
 ### `README.md`
 
-```markdown
+
 # Hangman Game
 
 This is a simple command-line Hangman game implemented in Python.
