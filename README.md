@@ -1,6 +1,6 @@
 ### `README.md`
 
-```markdown
+
 # Hangman Game
 
 This is a simple command-line Hangman game implemented in Python.
@@ -56,37 +56,9 @@ python hangman.py
 
 6. **Losing the Game:** You lose the game if the hangman is fully drawn before you can guess the entire word. The correct word will be revealed.
 
-```
+
 
 ### `requirements.txt`
 
-```
+
 pyfiglet
-```
-
-### Instructions to Add to GitHub
-
-1. Initialize a new Git repository:
-   ```sh
-   git init
-   ```
-
-2. Add all files to the repository:
-   ```sh
-   git add hangman.py README.md requirements.txt
-   ```
-
-3. Commit the changes:
-   ```sh
-   git commit -m "Initial commit with Hangman game"
-   ```
-
-4. Add the remote repository (replace the URL with your repository URL):
-   ```sh
-   git remote add origin https://github.com/Incognitol07/hangman.git
-   ```
-
-5. Push the changes to GitHub:
-   ```sh
-   git push -u origin main
-   ```
