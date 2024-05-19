@@ -96,6 +96,7 @@ while True:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(ascii_art)
         print(stages[lives])
+        print(f"Wow!, '{guess}' is definitely in the word")
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(ascii_art)
@@ -105,11 +106,16 @@ while True:
     
     
     if "_" not in display:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(ascii_art)
+        print(stages[lives])
         print(f"{' '.join(display)}")
         print("Hooray! You saved the hangman!")
         break
     
     if lives == 0:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(ascii_art)
         print(stages[0])
         print("Oh no! The hangman has met his fate. Better luck next time!")
         print(f"The word was '{chosen_word}'.")
