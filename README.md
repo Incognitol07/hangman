@@ -21,8 +21,8 @@ This is a simple command-line Hangman game implemented in Python.
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/hangman-game.git
-   cd hangman-game
+   git clone https://github.com/Incognitol07/hangman.git
+   cd hangman
    ```
 
 2. Install the required dependencies:
