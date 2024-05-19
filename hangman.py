@@ -85,6 +85,7 @@ win=    """
 
 display = ["_" for _ in chosen_word]
 lives =6
+os.system('clear' if os.name == 'posix' else 'cls')
 print(ascii_art)
 print(stages[lives])
 choices=[]
@@ -93,7 +94,7 @@ while True:
     guess = input("Guess a letter: ").lower()
     
     if guess in choices:
-        os.system('clear' if os.name == 'nt' else 'cls')
+        os.system('clear' if os.name == 'posix' else 'cls')
         print(ascii_art)
         print(stages[lives])
         print(f"You've already guessed '{guess}'")
@@ -101,15 +102,15 @@ while True:
         for position in range(len(chosen_word)):
             if chosen_word[position] == guess:
                 display[position] = guess
-        os.system('clear' if os.name == 'nt' else 'cls')
+        os.system('clear' if os.name == 'posix' else 'cls')
         print(ascii_art)
         print(stages[lives])
         print(f"Wow!, '{guess}' is definitely in the word")
     else:
-        os.system('clear' if os.name == 'nt' else 'cls')
+        os.system('clear' if os.name == 'posix' else 'cls')
         print(ascii_art)
-        print(stages[lives])
         lives -= 1
+        print(stages[lives])
         print(f"You guessed {guess}, that's not in the word. You lose a life!")
     choices.append(guess)
     
@@ -117,7 +118,7 @@ while True:
     
     
     if "_" not in display:
-        os.system('clear' if os.name == 'nt' else 'cls')
+        os.system('clear' if os.name == 'posix' else 'cls')
         print(ascii_art)
         print(f"{' '.join(display)}")
         print(win)
@@ -125,7 +126,7 @@ while True:
         break
     
     if lives == 0:
-        os.system('cls' if os.name == 'nt' else 'clear')
+        os.system('clear' if os.name == 'posix' else 'cls')
         print(ascii_art)
         print(stages[0])
         print("Oh no! The hangman has met his fate. Better luck next time!")
