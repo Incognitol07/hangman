@@ -2,6 +2,7 @@ import random as rn
 import pyfiglet
 import os
 
+# List of possible words for the hangman game
 word_list = [
     "abyss", "askew", "awkward", "avenue", "banjo", "bayou", "blitz", "bookworm",
     "boxcar", "buckaroo", "buffalo", "buzzing", "cobweb", "crypt", "cycle",
@@ -12,8 +13,13 @@ word_list = [
     "waltz", "wave", "waxy", "wimpy", "woozy", "yippee", "zigzag", "zombie"
 ]
 
+# Randomly select a word from the list
 chosen_word = rn.choice(word_list)
+
+# Generate ASCII art for the game title using pyfiglet
 ascii_art = pyfiglet.figlet_format("hangman", font='big')
+
+# Stages of the hangman game
 stages = [
     """
     +---+
@@ -73,7 +79,9 @@ stages = [
 ===========
 """
 ]
-win=    """
+
+# Winning screen art
+win = """
     +---+
     |   |
         |
@@ -83,12 +91,21 @@ win=    """
 ===========
 """
 
+# Initialize the display with blanks and set lives
 display = ["_" for _ in chosen_word]
-lives =6
+lives = 6
+
+# Clear the terminal screen
 os.system('clear' if os.name == 'posix' else 'cls')
+
+# Print the initial game setup
 print(ascii_art)
 print(stages[lives])
-choices=[]
+
+# List to track guessed letters
+choices = []
+
+# Main game loop
 while True:
     print(f"{' '.join(display)}")
     guess = input("Guess a letter: ").lower()
@@ -98,7 +115,7 @@ while True:
         print(ascii_art)
         print(stages[lives])
         print(f"You've already guessed '{guess}'")
-    elif guess in chosen_word :
+    elif guess in chosen_word:
         for position in range(len(chosen_word)):
             if chosen_word[position] == guess:
                 display[position] = guess
@@ -114,9 +131,7 @@ while True:
         print(f"You guessed {guess}, that's not in the word. You lose a life!")
     choices.append(guess)
     
-    
-    
-    
+    # Check if the game is won
     if "_" not in display:
         os.system('clear' if os.name == 'posix' else 'cls')
         print(ascii_art)
@@ -125,6 +140,7 @@ while True:
         print("Hooray! You saved the hangman!")
         break
     
+    # Check if the game is lost
     if lives == 0:
         os.system('clear' if os.name == 'posix' else 'cls')
         print(ascii_art)
