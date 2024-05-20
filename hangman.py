@@ -2,6 +2,7 @@ import random as rn
 import pyfiglet
 import os
 
+
 # List of possible words for the hangman game
 word_list = [
     "abyss", "askew", "awkward", "avenue", "banjo", "bayou", "blitz", "bookworm",
@@ -12,6 +13,7 @@ word_list = [
     "staff", "stretch", "subway", "swivel", "topaz", "unzip", "uptown", "walkway",
     "waltz", "wave", "waxy", "wimpy", "woozy", "yippee", "zigzag", "zombie"
 ]
+
 
 # Dictionary of hints for each word
 hints = {
@@ -144,6 +146,9 @@ win = """
    / \\  |
 ===========
 """
+
+
+
 def hangman_game():
     chosen_word = rn.choice(word_list)
     display = ["_" for _ in chosen_word]
@@ -213,13 +218,14 @@ def hangman_game():
             print(stages[0])
             print("Oh no! The hangman has met his fate. Better luck next time!")
             print(f"The word was '{chosen_word}'.")
-            restart = input("Do you want to start again [y/n]: ")
+            restart = input("Would you like to play again [y/n]: ")
             if restart.lower() == "y":
                 return True
             else:
                 print("Thanks for playing!!")
                 print("See you next time.")
                 return False
+
 
 while hangman_game():
     pass
