@@ -203,7 +203,7 @@ def hangman_game():
             print(f"{' '.join(display)}")
             print(win)
             print("Hooray! You saved the hangman!")
-            restart = input("Do you want to start again [y/n]: ")
+            restart = input("Do you want to play again [y/n]?: ")
             if restart.lower() == "y":
                 return True
             else:
@@ -218,7 +218,7 @@ def hangman_game():
             print(stages[0])
             print("Oh no! The hangman has met his fate. Better luck next time!")
             print(f"The word was '{chosen_word}'.")
-            restart = input("Would you like to play again [y/n]: ")
+            restart = input("Would you like to play again [y/n]?: ")
             if restart.lower() == "y":
                 return True
             else:
