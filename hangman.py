@@ -71,11 +71,7 @@ hints = {
     "zombie": "A fictional undead being."
 }
 
-# Randomly select a word from the list
-chosen_word = rn.choice(word_list)
 
-# Generate ASCII art for the game title using pyfiglet
-ascii_art = pyfiglet.figlet_format("hangman", font='big')
 
 # Stages of the hangman game
 stages = [
@@ -148,78 +144,82 @@ win = """
    / \\  |
 ===========
 """
+def hangman_game():
+    chosen_word = rn.choice(word_list)
+    display = ["_" for _ in chosen_word]
+    lives = 6
+    choices = []
 
-# Initialize the display with blanks and set lives
-display = ["_" for _ in chosen_word]
-lives = 6
+    # Clear the terminal screen
+    os.system('clear' if os.name == 'posix' else 'cls')
 
-# Clear the terminal screen
-os.system('clear' if os.name == 'posix' else 'cls')
+    # Generate ASCII art for the game title using pyfiglet
+    ascii_art = pyfiglet.figlet_format("hangman", font='big')
 
-# Print the initial game setup
-print(ascii_art)
-print(stages[lives])
+    # Print the initial game setup
+    print(ascii_art)
+    print(stages[lives])
 
-# List to track guessed letters
-choices = []
-
-# Main game loop
-while True:
-    print(f"{' '.join(display)}")
-    guess = input("Guess a letter: ").lower()
-    
-    if guess in choices:
-        os.system('clear' if os.name == 'posix' else 'cls')
-        print(ascii_art)
-        print(stages[lives])
-        print(f"You've already guessed '{guess}'")
-    elif guess in chosen_word:
-        for position in range(len(chosen_word)):
-            if chosen_word[position] == guess:
-                display[position] = guess
-        os.system('clear' if os.name == 'posix' else 'cls')
-        print(ascii_art)
-        print(stages[lives])
-        print(f"Wow!, '{guess}' is definitely in the word")
-    else:
-        os.system('clear' if os.name == 'posix' else 'cls')
-        print(ascii_art)
-        lives -= 1
-        print(stages[lives])
-        print(f"You guessed {guess}, that's not in the word. You lose a life!")
-        
-    choices.append(guess)
-    
-    # Provide a hint if lives are reduced to 2
-    if lives == 2:
-        print(f"Hint: {hints[chosen_word]}")
-    
-    # Check if the game is won
-    if "_" not in display:
-        os.system('clear' if os.name == 'posix' else 'cls')
-        print(ascii_art)
+    # Main game loop
+    while True:
         print(f"{' '.join(display)}")
-        print(win)
-        print("Hooray! You saved the hangman!")
-        restart=input("Do you want to start again [y/n]: ")
-        if restart.lower()=="y":
-            continue
+        guess = input("Guess a letter: ").lower()
+
+        if guess in choices:
+            os.system('clear' if os.name == 'posix' else 'cls')
+            print(ascii_art)
+            print(stages[lives])
+            print(f"You've already guessed '{guess}'")
+        elif guess in chosen_word:
+            for position in range(len(chosen_word)):
+                if chosen_word[position] == guess:
+                    display[position] = guess
+            os.system('clear' if os.name == 'posix' else 'cls')
+            print(ascii_art)
+            print(stages[lives])
+            print(f"Wow!, '{guess}' is definitely in the word")
         else:
-            print("Thanks for playing!!")
-            print("See you next time.")
-            break
-    
-    # Check if the game is lost
-    if lives == 0:
-        os.system('clear' if os.name == 'posix' else 'cls')
-        print(ascii_art)
-        print(stages[0])
-        print("Oh no! The hangman has met his fate. Better luck next time!")
-        print(f"The word was '{chosen_word}'.")
-        restart=input("Do you want to start again [y/n]: ")
-        if restart.lower()=="y":
-            continue
-        else:
-            print("Thanks for playing!!")
-            print("See you next time.")
-            break
+            os.system('clear' if os.name == 'posix' else 'cls')
+            print(ascii_art)
+            lives -= 1
+            print(stages[lives])
+            print(f"You guessed {guess}, that's not in the word. You lose a life!")
+
+        choices.append(guess)
+
+        # Provide a hint if lives are reduced to 2
+        if lives == 2:
+            print(f"Hint: {hints[chosen_word]}")
+
+        # Check if the game is won
+        if "_" not in display:
+            os.system('clear' if os.name == 'posix' else 'cls')
+            print(ascii_art)
+            print(f"{' '.join(display)}")
+            print(win)
+            print("Hooray! You saved the hangman!")
+            restart = input("Do you want to start again [y/n]: ")
+            if restart.lower() == "y":
+                return True
+            else:
+                print("Thanks for playing!!")
+                print("See you next time.")
+                return False
+
+        # Check if the game is lost
+        if lives == 0:
+            os.system('clear' if os.name == 'posix' else 'cls')
+            print(ascii_art)
+            print(stages[0])
+            print("Oh no! The hangman has met his fate. Better luck next time!")
+            print(f"The word was '{chosen_word}'.")
+            restart = input("Do you want to start again [y/n]: ")
+            if restart.lower() == "y":
+                return True
+            else:
+                print("Thanks for playing!!")
+                print("See you next time.")
+                return False
+
+while hangman_game():
+    pass
